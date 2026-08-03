@@ -62,4 +62,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Portfolio: [your-portfolio-link.com](https://your-portfolio-link.com)
 - Email: ddomoding824@nkumbauniversity.ac.ug
 - LinkedIn: [linkedin.com/in/Derrick Dickens Omoding](https://www.linkedin.com/in/derrick-dickens-omoding-19278840b?utm_source=share_via&utm_content=profile&utm_medium=member_android)
-- GitHub: [@your-Dickens12-derrick](https://github.com/Dickens12-derrick)
+- GitHub: [Dickens12-derrick](https://github.com/Dickens12-derrick)
