@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FaGithub, 
-  FaLinkedin, 
-  FaFacebook, 
-  FaInstagram, 
-  FaWhatsapp, 
-  FaEnvelope 
+import {
+  FaGithub,
+  FaLinkedin,
+  FaFacebook,
+  FaInstagram,
+  FaWhatsapp,
+  FaEnvelope
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import './App.css';
 
-// 1. IMPORT YOUR IMAGE HERE
-// import derrickImg from './assets/derrick.jpeg';
-
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'dark';
-  });
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -28,46 +23,39 @@ export default function App() {
   };
 
   const skills = [
-    'JavaScript',
-    'React Native',
-    'TypeScript',
-    'Tailwind CSS',
-    'Mobile Application',
-    'React',
-    // 'Adobe Photoshop',
-    'Python',
-    'Express.js',
-    'Postgre SQL',
-    'SWI Prolog',
-    'HTML5 & CSS3',
-    'Git & GitHub',
-    'Website Design',
-    'Node.js (Basic)',
-    'REST APIs'
+    {
+      category: 'Frontend',
+      items: ['React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'HTML5 & CSS3']
+    },
+    {
+      category: 'Mobile & Apps',
+      items: ['React Native', 'Expo', 'Responsive UI', 'Mobile UX']
+    },
+    {
+      category: 'Backend & Tools',
+      items: ['Node.js', 'Express.js', 'REST APIs', 'Git & GitHub', 'PostgreSQL']
+    }
   ];
 
   const projects = [
     {
       title: 'Personal Portfolio',
-      description: 'A responsive single-page portfolio built showcasing projects, skills, and contact options.',
-      tags: ['React', 'Tailwind CSS', 'Responsive'],
-      link: "#",
-      repo: "#",
-      featured: true,
+      description: 'A polished one-page portfolio that highlights projects, experience, and ways to connect.',
+      tags: ['React', 'CSS', 'Responsive'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
     },
     {
       title: 'E Katale ConsumerApp',
-      description: 'Front-end web application featuring a product gallery, filtering options, and an interactive shopping cart.',
-      tags: ['React Native', 'TypeScript', 'Expo', 'CSS'],
+      description: 'An interactive shopping experience with product browsing, filtering, and cart-friendly interactions.',
+      tags: ['React Native', 'TypeScript', 'Expo'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
     },
     {
       title: 'E Katale Landing Page',
-      description: 'A Web Page showing various frameworks of the E Katale like farmer, sho, products, warehouse, e.t.c.',
-      tags: ['React', 'TypeScript', 'Tailwind CSS'],
+      description: 'A clean landing page for showcasing product categories, services, and partner offerings.',
+      tags: ['React', 'Tailwind CSS', 'UI Design'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
     }
@@ -75,21 +63,18 @@ export default function App() {
 
   return (
     <div className="app">
-      {/* Navigation */}
       <nav className="navbar">
         <div className="container nav-container">
-          <a href="#" className="logo">Derrick Dickens Omoding</a>
+          <a href="#home" className="logo">DDO</a>
           <div className="nav-controls">
             <ul className="nav-links">
-              <li><a href="#about">About</a></li>
+              <li><a href="#home">Home</a></li>
               <li><a href="#projects">Projects</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
-            <button 
-              className="theme-toggle" 
-              onClick={toggleTheme} 
-              aria-label="Toggle theme"
-            >
+            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
               {theme === 'dark' ? '☀️' : '🌙'}
             </button>
           </div>
@@ -97,84 +82,58 @@ export default function App() {
       </nav>
 
       <main className="container">
-        {/* Hero Section */}
-        <section className="hero">
+        <section id="home" className="hero">
           <div className="hero-content">
+            <p className="eyebrow">ICT Student • Web & Mobile Enthusiast</p>
             <h1 className="hero-title">
-              Hello, I'm <span className="highlight">Derrick Dickens Omoding</span> <br />
-
-             <p className='dickens'>
-              I'm a student at Nkumba University. I'm an ICT student developing foundational skills incomputer systems and digital problem solving. I enjoy turning ideas practical solutions using technology and I am focused in building proffessional habbits like teamwork, documentation, and continuous learning. My goal is to grow into a reliable ICT professional who can support organization with efficient, secure and user-friendly systems. 
-            </p> <br />
-            
+              Hello, I’m <span className="highlight">Derrick Dickens Omoding</span>
             </h1>
-            {/* <h2 className="hero-subtitle">Software Developer</h2>
-            <p className="hero-tagline">
-              Passionate about building clean, performant, and user-friendly web applications.
-            </p> */}
+            <p className="hero-copy">
+              I’m a student at Nkumba University building practical skills in computer systems, web development, and digital problem solving. I enjoy turning ideas into usable solutions through thoughtful design, clear code, and steady learning.
+            </p>
             <div className="hero-ctas">
               <a href="#projects" className="btn btn-primary">View Projects</a>
               <a href="#contact" className="btn btn-secondary">Contact Me</a>
             </div>
 
-            {/* Social Links */}
             <div className="social-links">
               <a href="https://github.com/Dickens12-derrick" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <FaGithub size={26} />
+                <FaGithub size={24} />
               </a>
               <a href="https://www.linkedin.com/in/derrick-dickens-omoding-19278840b?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <FaLinkedin size={26} />
+                <FaLinkedin size={24} />
               </a>
               <a href="https://wa.me/256742258343" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                <FaWhatsapp size={26} />
+                <FaWhatsapp size={24} />
               </a>
               <a href="https://x.com/Omoding45968" target="_blank" rel="noopener noreferrer" aria-label="X">
-                <FaXTwitter size={26} />
+                <FaXTwitter size={24} />
               </a>
               <a href="https://www.instagram.com/omodingderrick?igsh=YmZnanp0b2ZvcmY2" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <FaInstagram size={26} />
+                <FaInstagram size={24} />
               </a>
               <a href="https://www.facebook.com/da.dext.ding" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <FaFacebook size={26} />
+                <FaFacebook size={24} />
               </a>
               <a href="mailto:ddickensomoding@gmail.com" aria-label="Email">
-                <FaEnvelope size={26} />
+                <FaEnvelope size={24} />
               </a>
             </div>
           </div>
 
-          {/* Image Container */}
           <div className="hero-avatar">
-            <img 
-              src="/derrick.jpeg" 
-              alt="Derrick Dickens Omoding" 
-            />
+            <img src="/derrick.jpeg" alt="Derrick Dickens Omoding" />
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="section">
-          <h2 className="section-title">About Me</h2>
-          <div className="about-grid">
-            <div>
-              <p>
-                As a beginner in ICT, I'm learning how technology connects people, data and processes. I am a dedicated software developer driven by crafting practical solutions to real-world problems. 
-                My current focus lies in modern web technologies, building scalable interfaces, and constantly improving 
-                my technical workflow.
-              </p>
-              <h3 className="skills-heading">Technical Skills</h3>
-              <div className="skills-grid">
-                {skills.map((skill, idx) => (
-                  <span key={idx} className="skill-chip">{skill}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
         <section id="projects" className="section">
-          <h2 className="section-title">Projects</h2>
+          <div className="section-heading">
+            <p className="eyebrow">Projects / Work</p>
+            <h2 className="section-title">Selected work</h2>
+            <p className="section-description">
+              I enjoy translating ideas into practical digital experiences that are useful, polished, and easy to navigate.
+            </p>
+          </div>
           <div className="projects-grid">
             {projects.map((project, idx) => (
               <div key={idx} className="project-card">
@@ -196,21 +155,67 @@ export default function App() {
           </div>
         </section>
 
-        {/* Contact Section */}
+        <section id="skills" className="section">
+          <div className="section-heading">
+            <p className="eyebrow">Skills</p>
+            <h2 className="section-title">What I work with</h2>
+          </div>
+          <div className="skills-grid">
+            {skills.map((skillGroup) => (
+              <div key={skillGroup.category} className="skill-card">
+                <h3>{skillGroup.category}</h3>
+                <ul>
+                  {skillGroup.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="about" className="section">
+          <div className="section-heading">
+            <p className="eyebrow">About</p>
+            <h2 className="section-title">A little more about me</h2>
+          </div>
+          <div className="about-grid">
+            <div className="about-card">
+              <p>
+                I am an aspiring ICT professional who enjoys learning by building. My focus is on creating dependable digital experiences, improving my technical foundation, and growing into a confident developer who can solve real problems with clear thinking and practical solutions.
+              </p>
+              <p>
+                Beyond the screen, I value teamwork, curiosity, and continuous improvement. I am especially interested in web and mobile development because it lets me turn ideas into tools that people can use every day.
+              </p>
+            </div>
+            <div className="about-card">
+              <h3>What I bring</h3>
+              <ul className="about-list">
+                <li>Strong interest in user-friendly design</li>
+                <li>Willingness to learn quickly and adapt</li>
+                <li>Focus on clean structure and practical delivery</li>
+                <li>Comfort working with modern web tools</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
         <section id="contact" className="section">
-          <h2 className="section-title">Get In Touch</h2>
+          <div className="section-heading">
+            <p className="eyebrow">Contact</p>
+            <h2 className="section-title">Let’s connect</h2>
+            <p className="section-description">
+              I’m open to collaborations, internships, and conversations about building something meaningful.
+            </p>
+          </div>
           <div className="contact-container">
             <div className="contact-info">
-              <p>I'm open to new opportunities, collaborations, or general questions. Feel free to drop a message!</p>
+              <p>Feel free to reach out for ideas, opportunities, or a simple hello.</p>
               <p><strong>Email:</strong> ddickensomoding@gmail.com</p>
               <p><strong>Phone:</strong> 0742258343</p>
+              <p><strong>Location:</strong> Uganda • Open to remote and collaborative work</p>
             </div>
-            <form 
-              className="contact-form" 
-              action="mailto:ddickensomoding@gmail.com" 
-              method="post" 
-              encType="text/plain"
-            >
+            <form className="contact-form" action="mailto:ddickensomoding@gmail.com" method="post" encType="text/plain">
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" name="name" required />
@@ -229,10 +234,9 @@ export default function App() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; {new Date().getFullYear()} Derrick Dickens Omoding.</p>
+          <p>© {new Date().getFullYear()} DDO. Crafted with care.</p>
         </div>
       </footer>
     </div>
