@@ -368,6 +368,37 @@
   color: var(--text-secondary);
 }
 
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--accent);
+  font-weight: 700;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  color: var(--text-primary);
+  transform: translateX(2px);
+}
+
+.contact-link::after {
+  content: attr(data-hover);
+  margin-left: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.contact-link:hover::after,
+.contact-link:focus-visible::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -399,6 +430,18 @@
   background-color: var(--surface-bg);
   color: var(--text-primary);
   transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+}
+
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus,
+.form-group textarea:-webkit-autofill,
+.form-group textarea:-webkit-autofill:hover,
+.form-group textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text-primary);
+  -webkit-box-shadow: 0 0 0px 1000px var(--surface-bg) inset;
+  box-shadow: 0 0 0px 1000px var(--surface-bg) inset;
+  border-color: var(--accent);
 }
 
 .form-group input:focus,

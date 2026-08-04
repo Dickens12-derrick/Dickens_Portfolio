@@ -211,22 +211,32 @@ export default function App() {
           <div className="contact-container">
             <div className="contact-info">
               <p>Feel free to reach out for ideas, opportunities, or a simple hello.</p>
-              <p><strong>Email:</strong> ddickensomoding@gmail.com</p>
-              <p><strong>Phone:</strong> 0742258343</p>
+              <p>
+                <strong>Email:</strong>{' '}
+                <a className="contact-link" href="mailto:ddickensomoding@gmail.com" data-hover="Send email" aria-label="Send an email to Derrick Dickens Omoding">
+                  ddickensomoding@gmail.com
+                </a>
+              </p>
+              <p>
+                <strong>Phone:</strong>{' '}
+                <a className="contact-link" href="tel:+256742258343" data-hover="Call now" aria-label="Call Derrick Dickens Omoding">
+                  0742258343
+                </a>
+              </p>
               <p><strong>Location:</strong> Uganda • Open to remote and collaborative work</p>
             </div>
             <form className="contact-form" action="mailto:ddickensomoding@gmail.com" method="post" encType="text/plain">
               <div className="form-group">
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" required />
+                <input type="text" id="name" name="name" autoComplete="name" required />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" required />
+                <input type="email" id="email" name="email" autoComplete="email" required />
               </div>
               <div className="form-group">
                 <label htmlFor="message">Message</label>
-                <textarea id="message" name="message" rows="4" required></textarea>
+                <textarea id="message" name="message" rows="4" autoComplete="off" required></textarea>
               </div>
               <button type="submit" className="btn btn-primary">Send Message</button>
             </form>
