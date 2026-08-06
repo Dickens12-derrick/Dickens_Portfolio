@@ -7,11 +7,11 @@ import {
   FaWhatsapp,
   FaEnvelope
 } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6';
-import './App.css';
+import { FaXTwitter } from 'react-icons/fa6'; // Import the updated X (formerly Twitter) icon from react-icons/fa6
+import './App.css'; // Import the CSS file for styling and theme management
 
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark'); // Default to dark theme if no preference is stored
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -84,12 +84,12 @@ export default function App() {
       <main className="container">
         <section id="home" className="hero">
           <div className="hero-content">
-            <p className="eyebrow">ICT Student • Web & Mobile Enthusiast</p>
+            <p className="eyebrow">ICT Student • Learning Modern Tech</p>
             <h1 className="hero-title">
-              Hello, I’m <span className="highlight">Derrick Dickens Omoding</span>
+              Hello, I'm <span className="highlight">Derrick Dickens Omoding</span>
             </h1>
             <p className="hero-copy">
-              I’m a student at Nkumba University building practical skills in computer systems, web development, and digital problem solving. I enjoy turning ideas into usable solutions through thoughtful design, clear code, and steady learning.
+              I'm a student at Nkumba University building practical skills in computer systems, web development, and digital problem solving. I enjoy turning ideas into usable solutions through thoughtful design, clear code, and steady learning.
             </p>
             <div className="hero-ctas">
               <a href="#projects" className="btn btn-primary">View Projects</a>
@@ -203,9 +203,9 @@ export default function App() {
         <section id="contact" className="section">
           <div className="section-heading">
             <p className="eyebrow">Contact</p>
-            <h2 className="section-title">Let’s connect</h2>
+            <h2 className="section-title">Let's connect</h2>
             <p className="section-description">
-              I’m open to collaborations, internships, and conversations about building something meaningful.
+              I'm open to collaborations, internships, and conversations about building something meaningful.
             </p>
           </div>
           <div className="contact-container">
@@ -219,7 +219,7 @@ export default function App() {
               </p>
               <p>
                 <strong>Phone:</strong>{' '}
-                <a className="contact-link" href="tel:+256742258343" data-hover="Call now" aria-label="Call Derrick Dickens Omoding">
+                <a className="contact-link" href="tel:+256742258343" data-hover="Call Now" aria-label="Call Derrick Dickens Omoding">
                   0742258343
                 </a>
               </p>
