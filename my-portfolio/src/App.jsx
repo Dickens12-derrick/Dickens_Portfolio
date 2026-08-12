@@ -75,7 +75,7 @@ export default function App() {
               <li><a href="#contact">Contact</a></li>
             </ul>
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-              {theme === 'dark' ? '☀️' : '🌙'}
+              {theme === 'dark' ? '☀️' : '🌙'},
             </button>
           </div>
         </div>
