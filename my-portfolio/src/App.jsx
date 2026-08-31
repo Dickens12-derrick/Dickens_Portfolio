@@ -58,7 +58,17 @@ export default function App() {
       tags: ['React', 'Tailwind CSS', 'UI Design'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
+    },
+
+    {
+      title: 'ShanbaLink Mobile Application',
+      description: 'An application built for showcasing product categories, services, and partner offerings. I built this app for my Project Course Work.',
+      tags: ['Kotlin'],
+      github: 'https://github.com/Dickens12-derrick',
+      demo: '#'
     }
+
+
   ];
 
   return (
