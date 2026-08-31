@@ -63,7 +63,7 @@ export default function App() {
     {
       title: 'ShanbaLink Mobile Application',
       description: 'An application built for showcasing product categories, services, and partner offerings. I built this app for my Project Course Work.',
-      tags: ['Kotlin'],
+      tags: ['Kotlin', 'Android Studio', 'Mobile Development'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
     }
