@@ -61,6 +61,14 @@ export default function App() {
     },
 
     {
+      title: 'ShambaLink Website',
+      description: 'A modern website for the ShambaLink platform, designed to provide an excellent user experience for farmers and buyers.',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+      github: 'https://github.com/Dickens12-derrick',
+      demo: '#'
+    },
+
+    {
       title: 'ShambaLink Mobile Application',
       description: 'An application built for linking farmers to trusted buyers. I built this app for my Project Course Work.',
       tags: ['Kotlin', 'Android Studio', 'Mobile Development'],
