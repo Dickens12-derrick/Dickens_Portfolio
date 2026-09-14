@@ -69,7 +69,7 @@ export default function App() {
     },
 
     {
-      title: 'ShambaLink Mobile Application',
+      title: 'Abim MarketLink Mobile Application',
       description: 'An application built for linking farmers to trusted buyers. I built this app for my Project Course Work.',
       tags: ['Kotlin', 'Android Studio', 'Mobile Development'],
       github: 'https://github.com/Dickens12-derrick',
