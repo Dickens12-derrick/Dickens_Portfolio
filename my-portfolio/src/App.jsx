@@ -173,7 +173,7 @@ export default function App() {
               <a href="https://www.facebook.com/da.dext.ding" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FaFacebook size={24} />
               </a>
-              <a href="mailto:ddickensomoding@gmail.com" aria-label="Email">
+              <a href="mailto:ddickensomoding@gmail.com?subject=Portfolio%20Inquiry" aria-label="Email Derrick Dickens Omoding">
                 <FaEnvelope size={24} />
               </a>
             </div>
@@ -271,7 +271,7 @@ export default function App() {
               <p>Feel free to reach out for ideas, opportunities, or a simple hello.</p>
               <p>
                 <strong>Email:</strong>{' '}
-                <a className="contact-link" href="mailto:ddickensomoding@gmail.com" data-hover="Send email" aria-label="Send an email to Derrick Dickens Omoding">
+                <a className="contact-link" href="mailto:ddickensomoding@gmail.com?subject=Portfolio%20Inquiry" data-hover="Send email" aria-label="Send an email to Derrick Dickens Omoding">
                   ddickensomoding@gmail.com
                 </a>
               </p>

@@ -426,10 +426,17 @@
 .form-group textarea {
   padding: 0.8rem 0.9rem;
   border-radius: 0.8rem;
-  border: 1px solid var(--border-color);
-  background-color: var(--surface-bg);
-  color: var(--text-primary);
-  transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
+  border: 1px solid var(--input-border);
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.2s ease;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--input-placeholder);
+  opacity: 1;
 }
 
 .form-group input:-webkit-autofill,
@@ -438,9 +445,9 @@
 .form-group textarea:-webkit-autofill,
 .form-group textarea:-webkit-autofill:hover,
 .form-group textarea:-webkit-autofill:focus {
-  -webkit-text-fill-color: var(--text-primary);
-  -webkit-box-shadow: 0 0 0px 1000px var(--surface-bg) inset;
-  box-shadow: 0 0 0px 1000px var(--surface-bg) inset;
+  -webkit-text-fill-color: var(--input-text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset;
+  box-shadow: 0 0 0px 1000px var(--input-bg) inset;
   border-color: var(--accent);
 }
 
@@ -448,6 +455,16 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--input-focus-ring);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-info strong {
+  color: var(--text-primary);
 }
 
 .footer {
