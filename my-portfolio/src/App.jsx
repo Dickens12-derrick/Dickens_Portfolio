@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import {
   FaGithub,
   FaLinkedin,
@@ -12,6 +13,8 @@ import './App.css'; // Import the CSS file for styling and theme management
 
 export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark'); // Default to dark theme if no preference is stored
+  const [isSending, setIsSending] = useState(false);
+  const form = useRef();
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -20,6 +23,31 @@ export default function App() {
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        () => {
+          alert('Thank you! Your message has been sent successfully.');
+          setIsSending(false);
+          e.target.reset(); // Clear the form fields
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          alert('Failed to send the message. Please check your network connection or try again later.');
+          setIsSending(false);
+        }
+      );
   };
 
   const skills = [
@@ -59,7 +87,6 @@ export default function App() {
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
     },
-
     {
       title: 'ShambaLink Website',
       description: 'A modern website for the ShambaLink platform, designed to provide an excellent user experience for farmers and buyers.',
@@ -67,15 +94,20 @@ export default function App() {
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
     },
-
     {
       title: 'Abim MarketLink Mobile Application',
       description: 'An application built for linking farmers to trusted buyers. I built this app for my Project Course Work.',
       tags: ['Kotlin', 'Android Studio', 'Mobile Development'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
+    },
+    {
+      title: 'UniShare-Uganda',
+      description: 'A platform for sharing educational resources and connecting students and educators.',
+      tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+      github: 'https://github.com/Dickens12-derrick',
+      demo: '#'
     }
-
   ];
 
   return (
@@ -92,7 +124,7 @@ export default function App() {
               <li><a href="#contact">Contact</a></li>
             </ul>
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
-              {theme === 'dark' ? '☀️' : '🌙'},
+              {theme === 'dark' ? '☀️' : '🌙'}
             </button>
           </div>
         </div>
@@ -242,20 +274,23 @@ export default function App() {
               </p>
               <p><strong>Location:</strong> Uganda • Open to remote and collaborative work</p>
             </div>
-            <form className="contact-form" action="mailto:ddickensomoding@gmail.com" method="post" encType="text/plain">
+
+            <form ref={form} className="contact-form" onSubmit={sendEmail}>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" autoComplete="name" required />
+                <label htmlFor="user_name">Name</label>
+                <input type="text" id="user_name" name="user_name" autoComplete="name" required />
               </div>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" autoComplete="email" required />
+                <label htmlFor="user_email">Email</label>
+                <input type="email" id="user_email" name="user_email" autoComplete="email" required />
               </div>
               <div className="form-group">
                 <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" rows="4" autoComplete="off" required></textarea>
               </div>
-              <button type="submit" className="btn btn-primary">Send Message</button>
+              <button type="submit" className="btn btn-primary" disabled={isSending}>
+                {isSending ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </div>
         </section>
