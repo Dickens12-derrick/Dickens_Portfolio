@@ -29,18 +29,27 @@ export default function App() {
     e.preventDefault();
     setIsSending(true);
 
+    const formData = new FormData(form.current);
+    const templateParams = {
+      from_name: formData.get('user_name')?.trim() || 'Website Visitor',
+      user_name: formData.get('user_name')?.trim() || 'Website Visitor',
+      user_email: formData.get('user_email')?.trim() || '',
+      message: formData.get('message')?.trim() || '',
+      reply_to: formData.get('user_email')?.trim() || '',
+    };
+
     emailjs
-      .sendForm(
+      .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
+        templateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {
           alert('Thank you! Your message has been sent successfully.');
           setIsSending(false);
-          e.target.reset(); // Clear the form fields
+          e.target.reset();
         },
         (error) => {
           console.error('FAILED...', error.text);
