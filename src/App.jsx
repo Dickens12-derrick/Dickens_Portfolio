@@ -116,6 +116,13 @@ export default function App() {
       tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
+    },
+    {
+      title: 'Uni-Share Nkumba University Application',
+      description: 'A mobile application for students to share notes, resources, and collaborate on academic projects.',
+      tags: ['Kotlin', 'Firebase', 'Mobile Development'],
+      github: 'https://github.com/Dickens12-derrick',
+      demo: '#'
     }
   ];
 
