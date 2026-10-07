@@ -1,6 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import {
+  BufferAttribute,
+  BufferGeometry,
+  Group,
+  Mesh,
+  MeshBasicMaterial,
+  PerspectiveCamera,
+  Points,
+  PointsMaterial,
+  Scene,
+  TorusGeometry,
+  TorusKnotGeometry,
+  WebGLRenderer
+} from 'three';
+import {
   FaGithub,
   FaLinkedin,
   FaFacebook,
@@ -10,6 +24,102 @@ import {
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6'; // Import the updated X (formerly Twitter) icon from react-icons/fa6
 import './App.css'; // Import the CSS file for styling and theme management
+
+function BackgroundScene({ theme }) {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return undefined;
+
+    const scene = new Scene();
+    const camera = new PerspectiveCamera(42, 1, 0.1, 100);
+    camera.position.z = 7;
+
+    const renderer = new WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    mount.appendChild(renderer.domElement);
+
+    const orbitGroup = new Group();
+    orbitGroup.position.set(2.25, 0.15, -0.5);
+    scene.add(orbitGroup);
+
+    const knot = new Mesh(
+      new TorusKnotGeometry(1.35, 0.012, 180, 8, 2, 3),
+      new MeshBasicMaterial({ transparent: true, opacity: theme === 'dark' ? 0.28 : 0.2 })
+    );
+    orbitGroup.add(knot);
+
+    const latitudeRing = new Mesh(
+      new TorusGeometry(1.9, 0.006, 6, 120),
+      new MeshBasicMaterial({ transparent: true, opacity: theme === 'dark' ? 0.16 : 0.13 })
+    );
+    latitudeRing.rotation.set(0.95, 0.45, 0.2);
+    orbitGroup.add(latitudeRing);
+
+    const orbitRing = new Mesh(
+      new TorusGeometry(1.65, 0.008, 6, 120),
+      new MeshBasicMaterial({ transparent: true, opacity: theme === 'dark' ? 0.2 : 0.16 })
+    );
+    orbitRing.rotation.set(0.3, 1.05, 0.6);
+    orbitGroup.add(orbitRing);
+
+    const particlePositions = new Float32Array(180 * 3);
+    for (let index = 0; index < particlePositions.length; index += 3) {
+      particlePositions[index] = (Math.random() - 0.5) * 11;
+      particlePositions[index + 1] = (Math.random() - 0.5) * 7;
+      particlePositions[index + 2] = (Math.random() - 0.5) * 4 - 1;
+    }
+    const particleGeometry = new BufferGeometry();
+    particleGeometry.setAttribute('position', new BufferAttribute(particlePositions, 3));
+    const particles = new Points(
+      particleGeometry,
+      new PointsMaterial({ size: 0.018, transparent: true, opacity: theme === 'dark' ? 0.48 : 0.35 })
+    );
+    scene.add(particles);
+
+    const accentColor = theme === 'dark' ? '#38bdf8' : '#0284c7';
+    orbitGroup.children.forEach((mesh) => mesh.material.color.set(accentColor));
+    particles.material.color.set(theme === 'dark' ? '#94dfff' : '#2583a9');
+
+    const resize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.position.x = window.innerWidth < 700 ? 0.9 : 0;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    resize();
+
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let frameId;
+    const render = () => {
+      if (!motionPreference.matches) {
+        orbitGroup.rotation.y += 0.0015;
+        orbitGroup.rotation.x = Math.sin(performance.now() * 0.0002) * 0.08;
+      }
+      renderer.render(scene, camera);
+      if (!motionPreference.matches) frameId = window.requestAnimationFrame(render);
+    };
+    render();
+
+    window.addEventListener('resize', resize);
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener('resize', resize);
+      particleGeometry.dispose();
+      orbitGroup.traverse((object) => {
+        object.geometry?.dispose();
+        object.material?.dispose();
+      });
+      particles.material.dispose();
+      renderer.dispose();
+      mount.removeChild(renderer.domElement);
+    };
+  }, [theme]);
+
+  return <div className="background-scene" ref={mountRef} aria-hidden="true" />;
+}
 
 export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark'); // Default to dark theme if no preference is stored
@@ -128,6 +238,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <BackgroundScene theme={theme} />
       <nav className="navbar">
         <div className="container nav-container">
           <a href="#home" className="logo">DDO</a>
