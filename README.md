@@ -11,7 +11,7 @@ Showcases my projects, skills, experience, and contact info.
 - **Sections**: Hero, About, Skills, Projects, Experience, Contact
 - **Smooth Animations**: Framer Motion for transitions
 - **SEO Ready**: React Helmet for meta tags
-- **Contact Form**: Email integration with [EmailJS / Formspree]
+- **Contact Form**: EmailJS-powered contact form with inline delivery status
 
 ## 🛠 Tech Stack
 
@@ -34,6 +34,9 @@ npm install
 ### 3. Run locally
 npm run dev
 Open `http://localhost:5173` in your browser.
+
+### EmailJS contact form
+Create a local `.env` file using `.env.example` and fill in the EmailJS service ID, template ID, and public key. In the EmailJS template, set the recipient to the inbox where you want to receive portfolio messages, include `{{user_name}}`, `{{user_email}}`, and `{{message}}` in the email body, and set the reply-to field to `{{reply_to}}`. The form sends messages to that configured inbox; incoming email and replies are handled by your email provider.
 
 ### 4. Build for production
 npm run build

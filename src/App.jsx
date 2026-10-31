@@ -15,7 +15,7 @@ import {
   WebGLRenderer
 } from 'three';
 import {
-  FaGithub,
+  FaGithub, 
   FaLinkedin,
   FaFacebook,
   FaInstagram,
@@ -124,6 +124,7 @@ function BackgroundScene({ theme }) {
 export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark'); // Default to dark theme if no preference is stored
   const [isSending, setIsSending] = useState(false);
+  const [sendStatus, setSendStatus] = useState(null);
   const form = useRef();
 
   useEffect(() => {
@@ -135,11 +136,21 @@ export default function App() {
     setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
-    setIsSending(true);
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    if (!serviceId || !templateId || !publicKey) {
+      setSendStatus({ type: 'error', message: 'The contact form is not configured yet.' });
+      return;
+    }
 
     const formData = new FormData(form.current);
+    setIsSending(true);
+    setSendStatus(null);
     const templateParams = {
       from_name: formData.get('user_name')?.trim() || 'Website Visitor',
       user_name: formData.get('user_name')?.trim() || 'Website Visitor',
@@ -148,25 +159,16 @@ export default function App() {
       reply_to: formData.get('user_email')?.trim() || '',
     };
 
-    emailjs
-      .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          alert('Thank you! Your message has been sent successfully.');
-          setIsSending(false);
-          e.target.reset();
-        },
-        (error) => {
-          console.error('FAILED...', error.text);
-          alert('Failed to send the message. Please check your network connection or try again later.');
-          setIsSending(false);
-        }
-      );
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      setSendStatus({ type: 'success', message: 'Thanks for reaching out. Your message has been sent.' });
+      form.current?.reset();
+    } catch (error) {
+      console.error('EmailJS send failed:', error);
+      setSendStatus({ type: 'error', message: 'Your message could not be sent. Please try again or email me directly.' });
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const skills = [
@@ -176,11 +178,11 @@ export default function App() {
     },
     {
       category: 'Mobile & Apps',
-      items: ['React Native', 'Expo', 'Responsive UI', 'Mobile UX']
+      items: ['React Native', 'Expo', 'Responsive UI', 'Mobile UX', 'Kotlin']
     },
     {
       category: 'Backend & Tools',
-      items: ['Node.js', 'Express.js', 'REST APIs', 'Git & GitHub', 'PostgreSQL']
+      items: ['Node.js', 'Express.js', 'REST APIs', 'Git & GitHub', 'PostgreSQL', 'Firebase', 'Flask', 'Python']
     }
   ];
 
@@ -418,6 +420,14 @@ export default function App() {
               <button type="submit" className="btn btn-primary" disabled={isSending}>
                 {isSending ? 'Sending...' : 'Send Message'}
               </button>
+              {sendStatus && (
+                <p className="form-status" data-state={sendStatus.type} role="status">
+                  {sendStatus.message}{' '}
+                  {sendStatus.type === 'error' && (
+                    <a href="mailto:ddickensomoding@gmail.com?subject=Portfolio%20Inquiry">Email me directly</a>
+                  )}
+                </p>
+              )}
             </form>
           </div>
         </section>
