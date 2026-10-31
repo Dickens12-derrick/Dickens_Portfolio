@@ -36,7 +36,9 @@ npm run dev
 Open `http://localhost:5173` in your browser.
 
 ### EmailJS contact form
-Create a local `.env` file using `.env.example` and fill in the EmailJS service ID, template ID, and public key. In the EmailJS template, set the recipient to the inbox where you want to receive portfolio messages, include `{{user_name}}`, `{{user_email}}`, and `{{message}}` in the email body, and set the reply-to field to `{{reply_to}}`. The form sends messages to that configured inbox; incoming email and replies are handled by your email provider.
+Create a local `.env` file using `.env.example` and fill in the EmailJS service ID, template ID, and public key. In the main EmailJS template, set the recipient to your inbox, include `{{user_name}}`, `{{user_email}}`, and `{{message}}` in the email body, and set reply-to to `{{reply_to}}`.
+
+To send a confirmation to each visitor, create a second EmailJS template using the ready-to-paste content in [docs/emailjs-auto-reply.md](docs/emailjs-auto-reply.md), then open the main template's **Auto-Reply** tab and link the new template. The linked template is sent automatically with the contact form submission; it uses `{{user_email}}` as the recipient. EmailJS may count this as an additional request. The website sends messages to your configured inbox; reading and replying to those messages remains in your email provider.
 
 ### 4. Build for production
 npm run build
