@@ -235,6 +235,13 @@ export default function App() {
       tags: ['Kotlin', 'Firebase', 'Mobile Development'],
       github: 'https://github.com/Dickens12-derrick',
       demo: '#'
+    },
+    {
+      title: 'Daily Planner App',
+      description: 'A simple yet effective daily planner application timetable to help users organize their tasks and manage their time. it allows users to create, edit, and delete tasks, set reminders, and track their progress throughout the day.',
+      tags: ['React', 'JavaScript','Tailwind CSS', 'State Management'],
+      github: 'https://github.com/Dickens12-derrick',
+      demo: '#'
     }
   ];
 
