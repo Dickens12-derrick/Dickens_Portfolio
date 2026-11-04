@@ -191,56 +191,56 @@ export default function App() {
       title: 'Personal Portfolio',
       description: 'A polished one-page portfolio that highlights projects, experience, and ways to connect.',
       tags: ['React', 'CSS', 'Responsive'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/Dickens_Portfolio.git',
       demo: '#'
     },
     {
       title: 'E Katale ConsumerApp',
       description: 'An interactive shopping experience with product browsing, filtering, and cart-friendly interactions.',
       tags: ['React Native', 'TypeScript', 'Expo'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/Dickens-CosumerApp.git',
       demo: '#'
     },
     {
       title: 'E Katale Landing Page',
       description: 'A clean landing page for showcasing product categories, services, and partner offerings.',
       tags: ['React', 'Tailwind CSS', 'UI Design'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/E-Katale-Landing-Page.git',
       demo: '#'
     },
     {
       title: 'ShambaLink Website',
       description: 'A modern website for the ShambaLink platform, designed to provide an excellent user experience for farmers and buyers.',
       tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/ShambaLink-Website.git',
       demo: '#'
     },
     {
       title: 'Abim MarketLink Mobile Application',
       description: 'An application built for linking farmers to trusted buyers. I built this app for my Project Course Work.',
       tags: ['Kotlin', 'Android Studio', 'Mobile Development'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/Abim-MarketLink-Mobile-Application.git',
       demo: '#'
     },
     {
       title: 'UniShare-Uganda',
       description: 'A platform for sharing educational resources and connecting students and educators.',
       tags: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/unishare.git',
       demo: '#'
     },
     {
       title: 'Uni-Share Nkumba University Application',
       description: 'A mobile application for students to share notes, resources, and collaborate on academic projects.',
       tags: ['Kotlin', 'Firebase', 'Mobile Development'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/UNI-SHARE-NU-APP.git',
       demo: '#'
     },
     {
       title: 'Daily Planner App',
       description: 'A simple yet effective daily planner application timetable to help users organize their tasks and manage their time. it allows users to create, edit, and delete tasks, set reminders, and track their progress throughout the day.',
       tags: ['React', 'JavaScript','Tailwind CSS', 'State Management'],
-      github: 'https://github.com/Dickens12-derrick',
+      github: 'https://github.com/Dickens12-derrick/Daily-Planner-App.git',
       demo: '#'
     }
   ];
