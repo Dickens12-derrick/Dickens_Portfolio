@@ -23,6 +23,7 @@ import {
   FaEnvelope
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
+import profileImage from './assets/derrick.jpeg';
 import './App.css';
 
 function BackgroundScene({ theme }) {
@@ -313,7 +314,7 @@ export default function App() {
           </div>
 
           <div className="hero-avatar">
-            <img src="/derrick.jpeg" alt="Derrick Dickens Omoding" />
+            <img src={profileImage} alt="DDO" />
           </div>
         </section>
 
