@@ -15,15 +15,15 @@ import {
   WebGLRenderer
 } from 'three';
 import {
-  FaGithub, 
+  FaGithub,
   FaLinkedin,
   FaFacebook,
   FaInstagram,
   FaWhatsapp,
   FaEnvelope
 } from 'react-icons/fa';
-import { FaXTwitter } from 'react-icons/fa6'; // Import the updated X (formerly Twitter) icon from react-icons/fa6
-import './App.css'; // Import the CSS file for styling and theme management
+import { FaXTwitter } from 'react-icons/fa6';
+import './App.css';
 
 function BackgroundScene({ theme }) {
   const mountRef = useRef(null);
@@ -122,7 +122,7 @@ function BackgroundScene({ theme }) {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark'); // Default to dark theme if no preference is stored
+  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
   const [isSending, setIsSending] = useState(false);
   const [sendStatus, setSendStatus] = useState(null);
   const form = useRef();
@@ -144,7 +144,10 @@ export default function App() {
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
     if (!serviceId || !templateId || !publicKey) {
-      setSendStatus({ type: 'error', message: 'The contact form is not configured yet.' });
+      setSendStatus({
+        type: 'error',
+        message: 'EmailJS is not configured yet. Add VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY to your .env file, then restart the app.'
+      });
       return;
     }
 
@@ -165,7 +168,10 @@ export default function App() {
       form.current?.reset();
     } catch (error) {
       console.error('EmailJS send failed:', error);
-      setSendStatus({ type: 'error', message: 'Your message could not be sent. Please try again or email me directly.' });
+      setSendStatus({
+        type: 'error',
+        message: 'Your message could not be sent. Please check your EmailJS configuration or email me directly.'
+      });
     } finally {
       setIsSending(false);
     }
@@ -238,8 +244,8 @@ export default function App() {
     },
     {
       title: 'Daily Planner App',
-      description: 'A simple yet effective daily planner application timetable to help users organize their tasks and manage their time. it allows users to create, edit, and delete tasks, set reminders, and track their progress throughout the day.',
-      tags: ['React', 'JavaScript','Tailwind CSS', 'State Management'],
+      description: 'A simple yet effective daily planner application timetable to help users organize their tasks and manage their time. it allows users to create, edit, and delete tasks, set reminders, and track progress.',
+      tags: ['React', 'JavaScript', 'Tailwind CSS', 'State Management'],
       github: 'https://github.com/Dickens12-derrick/Daily-Planner-App.git',
       demo: '#'
     }
@@ -274,7 +280,7 @@ export default function App() {
               Hello, I'm <span className="highlight">Derrick Dickens Omoding</span>
             </h1>
             <p className="hero-copy">
-              I'm a student at Nkumba University building practical skills in computer systems, web development, and digital problem solving. I enjoy turning ideas into usable solutions through thoughtful design, clear code, and steady learning.
+              I'm a student at Nkumba University building practical skills in computer systems, web development, and digital problem solving. I enjoy turning ideas into usable solutions through thoughtful design and reliable implementation.
             </p>
             <div className="hero-ctas">
               <a href="#projects" className="btn btn-primary">View Projects</a>
@@ -367,10 +373,10 @@ export default function App() {
           <div className="about-grid">
             <div className="about-card">
               <p>
-                I am an aspiring ICT professional who enjoys learning by building. My focus is on creating dependable digital experiences, improving my technical foundation, and growing into a confident developer who can solve real problems with clear thinking and practical solutions.
+                I am an aspiring ICT professional who enjoys learning by building. My focus is on creating dependable digital experiences, improving my technical foundation, and growing into a confident developer.
               </p>
               <p>
-                Beyond the screen, I value teamwork, curiosity, and continuous improvement. I am especially interested in web and mobile development because it lets me turn ideas into tools that people can use every day.
+                Beyond the screen, I value teamwork, curiosity, and continuous improvement. I am especially interested in web and mobile development because it lets me turn ideas into tools that people can actually use.
               </p>
             </div>
             <div className="about-card">
