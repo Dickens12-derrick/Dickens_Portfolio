@@ -179,25 +179,29 @@ export default function App() {
     }
   };
 
-  const skills = [
-    {
-      category: 'Frontend',
-      items: ['React', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'HTML5 & CSS3']
-    },
-    {
-      category: 'Mobile & Apps',
-      items: ['React Native', 'Expo', 'Responsive UI', 'Mobile UX', 'Java', 'Kotlin']
-    },
-    {
-      category: 'Backend & Tools',
-      items: ['Node.js', 'Express.js', 'REST APIs', 'Git & GitHub', 'PostgreSQL', 'Firebase', 'Flask', 'Python']
-    },
-    {
-  category: 'DevOps & Cloud',
-  items: ['Vercel / Netlify', 'CI/CD (GitHub Actions)', 'Linux', 'Render']
-}
+ const skills = [
+  {
+    category: 'Frontend',
+    items: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'PWA (Progressive Web Apps)', 'HTML5 & CSS3']
+  },
+  {
+    category: 'Mobile & Apps',
+    items: ['React Native', 'Expo', 'MVVM Architecture', 'Responsive UI', 'Mobile UX', 'Java', 'Kotlin']
+  },
+  {
+    category: 'Backend & Database',
+    items: ['Node.js', 'Express.js', 'CRUD Operations', 'REST & GraphQL APIs', 'PostgreSQL', 'MongoDB', 'Firebase', 'Flask / Python']
+  },
+  {
+    category: 'DevOps & Cloud',
+    items: ['Docker', 'AWS (S3/EC2)', 'Vercel / Netlify', 'CI/CD (GitHub Actions)', 'Linux', 'Render']
+  },
+  {
+    category: 'Testing & Tools',
+    items: ['Jest', 'Cypress / Playwright', 'Git & GitHub', 'Figma', 'Postman']
+  }
+];
 
-  ];
 
   const projects = [
     {
