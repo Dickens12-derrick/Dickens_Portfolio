@@ -161,6 +161,7 @@ export default function App() {
       user_email: formData.get('user_email')?.trim() || '',
       message: formData.get('message')?.trim() || '',
       reply_to: formData.get('user_email')?.trim() || '',
+      title: 'Portfolio contact form',
     };
 
     try {
@@ -185,12 +186,17 @@ export default function App() {
     },
     {
       category: 'Mobile & Apps',
-      items: ['React Native', 'Expo', 'Responsive UI', 'Mobile UX', 'Kotlin']
+      items: ['React Native', 'Expo', 'Responsive UI', 'Mobile UX', 'Java', 'Kotlin']
     },
     {
       category: 'Backend & Tools',
       items: ['Node.js', 'Express.js', 'REST APIs', 'Git & GitHub', 'PostgreSQL', 'Firebase', 'Flask', 'Python']
-    }
+    },
+    {
+  category: 'DevOps & Cloud',
+  items: ['Vercel / Netlify', 'CI/CD (GitHub Actions)', 'Linux', 'Render']
+}
+
   ];
 
   const projects = [
