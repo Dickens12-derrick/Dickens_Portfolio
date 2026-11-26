@@ -19,6 +19,7 @@ import {
   FaLinkedin,
   FaFacebook,
   FaInstagram,
+  FaTelegram,
   FaWhatsapp,
   FaEnvelope
 } from 'react-icons/fa';
@@ -313,6 +314,9 @@ export default function App() {
               </a>
               <a href="https://www.instagram.com/omodingderrick?igsh=YmZnanp0b2ZvcmY2" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <FaInstagram size={24} />
+              </a>
+              <a href="https://t.me/derrickdickensomoding" target="_blank" rel="noopener noreferrer"  aria-label="Telegram">
+              <FaTelegram size={24} />
               </a>
               <a href="https://www.facebook.com/da.dext.ding" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <FaFacebook size={24} />
